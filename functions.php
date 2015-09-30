@@ -49,5 +49,16 @@
 		echo $name." ".$age;
 	}
 	
+		function addCarPlate($car_plate, $car_color) {
+		$mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("INSERT INTO car_plates (user_id, number_plate, color) VALUES (?,?,?)");
+		$stmt->bind_param("iss", $_SESSION, $car_plate, $car_color);
+		$stmt->execute();
+		$stmt->close();
+
+		$mysqli->close();
+			
+	}
+	
 
 ?>
