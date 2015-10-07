@@ -37,7 +37,15 @@
 		//mõlemad on kohustuslik
 		if($color_error == "" && $number_plate_error == ""){
 			//salvestate ab'i fn kadudu addCarPlate
-			addCarPlate($number_plate, $color);
+			$msg = addCarPlate($number_plate, $color);
+			
+			if($msg != ""){
+				//õnnestus
+				$number_plate = "";
+				$color = "";
+				
+				echo $msg;
+			}
 		}
 	}
 	
